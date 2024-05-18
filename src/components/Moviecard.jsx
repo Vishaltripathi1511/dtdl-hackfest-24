@@ -22,15 +22,11 @@ function Moviecard({ movie }) {
     }, [movie.id]);
 
     const BookmarkMovie = () => {
-        if (!user) {
-            toast.info("To bookmark this movie, please log in.");
+        setIsBookmarked(!isBookmarked)
+        if (isBookmarked) {
+            localStorage.removeItem(movie.id);
         } else {
-            setIsBookmarked(!isBookmarked)
-            if (isBookmarked) {
-                localStorage.removeItem(movie.id);
-            } else {
-                localStorage.setItem(movie.id, JSON.stringify(movie));
-            }
+            localStorage.setItem(movie.id, JSON.stringify(movie));
         }
     }
 
