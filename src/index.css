@@ -29,7 +29,7 @@ body{
 
 .active{
     background-color: white;
-    color: black;
+    color: rgba(226,0,116,255);
     /* border: 1px solid white; */
 }
 
