@@ -81,13 +81,13 @@ const EmailCollectorModal = () => {
                             <button
                                 type="button"
                                 onClick={handleAddEmail}
-                                className="bg-magenta text-black px-4 py-2 rounded mb-3 hover:bg-blue-dark"
+                                className="btn-magenta text-black px-4 py-2 rounded mb-3 hover:bg-blue-dark"
                             >
                                 Add Email
                             </button>
                             <button
                                 type="submit"
-                                className="bg-magenta text-black px-4 py-2 rounded hover:bg-blue-dark"
+                                className="btn-magenta text-black px-4 py-2 rounded hover:bg-blue-dark"
                             >
                                 Submit
                             </button>

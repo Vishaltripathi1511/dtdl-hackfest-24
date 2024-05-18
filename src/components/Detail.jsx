@@ -7,6 +7,7 @@ import { FaPlay } from "react-icons/fa";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import slugify from 'react-slugify';
+import FriendsListModal from './ShareWithFriends'
 
 export const Detail = () => {
   const APIKEY = import.meta.env.VITE_API_KEY;
@@ -14,11 +15,21 @@ export const Detail = () => {
   const { loader, setLoader } = useContext(Contextpage);
 
   const { id } = useParams()
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [moviedet, setMoviedet] = useState([]);
   const [castdata, setCastdata] = useState([]);
   const [moviegenres, setMoviegenres] = useState([]);
   const [video, setVideo] = useState([]);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+      setIsModalOpen(()=>false);
+  };
+  
 
   const fetchMovie = async () => {
     const data = await fetch(
@@ -78,7 +89,13 @@ export const Detail = () => {
             <div className='text-blue-100 font-semibold my-3 flex justify-center'>
               <h2 className='bg-blue-600/30 border-2 border-blue-700 py-2 px-3 rounded-full'>Release Date : {moviedet.release_date}</h2>
             </div>
+            <button className='text-blue-100 font-semibold my-3 flex justify-center' onClick={openModal}>
+            <h2 className='bg-blue-600/30 border-2 border-blue-700 py-2 px-3 rounded-full' > Recomend to Friends</h2>
+             
+              <FriendsListModal isOpen={isModalOpen} onClose={closeModal}/>
 
+            </button >
+        
             {/* tag */}
             <div className='flex justify-center flex-wrap'>
               {moviegenres.map((tag) => (
