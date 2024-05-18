@@ -26,7 +26,15 @@ export function MovieProvider({ children }) {
   const navigate = useNavigate();// =====> navigate page
 
   const APIKEY = import.meta.env.VITE_API_KEY;
+  const recommendationSystemURI = "http://localhost:8080";
 
+	function setCustomHeaders () {	  
+    // options.headers = { ...options.headers, ...additionalHeaders };
+	return {
+		method: 'GET',
+		headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaHVua3kuZ3VwdGEiLCJpYXQiOjE3MTYwMzgwNTEsImV4cCI6MTcxNjEyODA1MX0.npf0L8_QRAQq5J9K8R_fNAaMT9rdMeZjIFYqtoDENbc'}
+	}
+  }
 
   useEffect(() => {
     if (page < 1) {
@@ -37,7 +45,8 @@ export function MovieProvider({ children }) {
 
   const filteredGenre = async () => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?with_genres=${activegenre}&api_key=${APIKEY}&with_origin_country=IN&page=${page}`
+    	`${recommendationSystemURI}/recommendation/get?with_genres=${activegenre}&api_key=${APIKEY}&with_origin_country=IN&pageNo=${page}`,
+		setCustomHeaders()
     );
     const filteredGenre = await data.json();
     setMovies(movies.concat(filteredGenre.results)); // Concat new movies with previous movies, on genre change movies are reset to [] so that only movies of new genre will appear, check out useEffect on top for more information.

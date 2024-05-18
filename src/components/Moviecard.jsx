@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { AiFillStar, AiOutlineStar} from 'react-icons/ai';
+import { LiaUserFriendsSolid } from "react-icons/lia";
 import { toast } from 'react-toastify';
 import Contextpage from '../Contextpage';
 
@@ -29,6 +30,17 @@ function Moviecard({ movie }) {
             localStorage.setItem(movie.id, JSON.stringify(movie));
         }
     }
+	
+	const setViewed = () => {
+		fetch(
+			`http://localhost:8080/recommendation/view?movieId=${movie.id}`,
+			{
+				method: 'GET',
+				headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaHVua3kuZ3VwdGEiLCJpYXQiOjE3MTYwMzgwNTEsImV4cCI6MTcxNjEyODA1MX0.npf0L8_QRAQq5J9K8R_fNAaMT9rdMeZjIFYqtoDENbc'}
+			}
+		);
+  
+	}
 
     return (
         <motion.div
@@ -36,10 +48,12 @@ function Moviecard({ movie }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 1 }}
             layout
-            className="card relative w-full md:w-60 h-[410px] md:h-[360px] my-3 mx-4 md:my-5 md:mx-0 cursor-pointer rounded-xl overflow-hidden">
+            className="card relative w-full md:w-60 h-[410px] md:h-[360px] my-3 mx-4 md:my-5 md:mx-0 cursor-pointer rounded-xl overflow-hidden"
+			onClick={setViewed}>
             
             {/* bookmark buttons */}
             <button className="absolute bg-black text-white p-2 z-20 right-0 m-3 rounded-full text-xl" onClick={BookmarkMovie}> {isBookmarked ? <AiFillStar /> : <AiOutlineStar/>}</button>
+            <button className="absolute bg-black text-white p-2 z-20 right-0 top-10 m-3 rounded-full text-xl" onClick={openRecommendPopup}> <LiaUserFriendsSolid/></button>
 
             
             <div className='absolute bottom-0 w-full flex justify-between items-end p-3 z-20'>

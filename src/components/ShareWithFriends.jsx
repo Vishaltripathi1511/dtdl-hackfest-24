@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 const FriendsListModal = ({isOpen, onClose}) => {
-    console.log("===isOpen",isOpen,onClose)
     const [friends, setFriends] = useState(['Alice', 'Bob', 'Charlie', 'David', 'Eve']);
     const [selectedFriends, setSelectedFriends] = useState([]);
     const [userName, setUserName] = useState('');
