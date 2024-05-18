@@ -7,7 +7,7 @@ import { FaPlay } from "react-icons/fa";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import slugify from 'react-slugify';
-import FriendsListModal from './ShareWithFriends'
+import ShareWithFriendsPopup from './ShareWithFriendsPopup'
 
 export const Detail = () => {
   const APIKEY = import.meta.env.VITE_API_KEY;
@@ -22,12 +22,12 @@ export const Detail = () => {
   const [moviegenres, setMoviegenres] = useState([]);
   const [video, setVideo] = useState([]);
 
-  const openModal = () => {
+  const openShareWithFriendsPopup = () => {
     setIsModalOpen(true);
   };
 
-  const closeModal = () => {
-      setIsModalOpen(()=>false);
+  const closeShareWithFriendsPopup = () => {
+      setIsModalOpen(false);
   };
   
 
@@ -70,6 +70,7 @@ export const Detail = () => {
   return (
 
     <>
+    	{isModalOpen && <ShareWithFriendsPopup isOpen={isModalOpen} onClose={closeShareWithFriendsPopup} movie={moviedet}/>}
       {
         loader ? <div className='h-screen w-full flex justify-center items-center'><span className="loader m-10"></span></div> :
           <>
@@ -89,11 +90,8 @@ export const Detail = () => {
             <div className='text-blue-100 font-semibold my-3 flex justify-center'>
               <h2 className='bg-blue-600/30 border-2 border-blue-700 py-2 px-3 rounded-full'>Release Date : {moviedet.release_date}</h2>
             </div>
-            <button className='text-blue-100 font-semibold my-3 flex justify-center' onClick={openModal}>
+            <button className='text-blue-100 font-semibold my-3 flex justify-center' onClick={openShareWithFriendsPopup}>
             <h2 className='bg-blue-600/30 border-2 border-blue-700 py-2 px-3 rounded-full' > Recomend to Friends</h2>
-             
-              <FriendsListModal isOpen={isModalOpen} onClose={closeModal}/>
-
             </button >
         
             {/* tag */}
