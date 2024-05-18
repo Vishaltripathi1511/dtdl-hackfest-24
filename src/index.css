@@ -69,4 +69,8 @@ body{
       opacity: 0;
 }
   }
+
+.btn-magenta {
+	background-color: rgba(226,0,116,255);
+}
   

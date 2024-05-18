@@ -25,7 +25,7 @@ function Trending() {
     return (
         <>
             <Helmet>
-                <title>One Tv Movies | Trending</title>
+                <title>OneTV Movies | Trending</title>
             </Helmet>
 
             <div className='w-full bg-[#10141e] md:p-10 mb-20 md:mb-0'>

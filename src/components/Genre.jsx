@@ -25,7 +25,7 @@ function Genre() {
     return (
         <>
         <Helmet>
-            <title>One TV Movies | Genres</title>
+            <title>OneTV Movies | Genres</title>
         </Helmet>
 
         <div className='flex flex-wrap justify-center px-2'>
@@ -34,7 +34,7 @@ function Genre() {
 
                     <button
                         onClick={() => setActiveGenre(genre.id)}
-                        className={activegenre === genre.id ? 'active px-4 py-2 m-2 text-[15px] text-white font-semibold rounded-3xl' : 'px-4 py-2 m-2 text-[15px] bg-slate-800 text-white font-semibold rounded-3xl'} key={genre.id}>
+                        className={activegenre === genre.id ? 'btn-magenta px-4 py-2 m-2 text-[15px] text-white font-semibold rounded-3xl' : 'px-4 py-2 m-2 text-[15px] bg-slate-800 text-white font-semibold rounded-3xl'} key={genre.id}>
                         {genre.name}
                     </button>
 

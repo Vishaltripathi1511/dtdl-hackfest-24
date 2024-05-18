@@ -1,5 +1,5 @@
-<h1 align="center">One TV-Movies</h1>
-One TV-Movies is a React-based movie website that allows users to search for movies by title, sort them by genre, view trending and upcoming movies, and bookmark their favorite movies. The website is designed to be user-friendly and visually appealing.
+<h1 align="center">OneTV-Movies</h1>
+OneTV-Movies is a React-based movie website that allows users to search for movies by title, sort them by genre, view trending and upcoming movies, and bookmark their favorite movies. The website is designed to be user-friendly and visually appealing.
 <hr/>
 
 ![background](https://user-images.githubusercontent.com/87109400/231843668-00e0d9aa-8447-4148-8a3a-0b68135c0795.png)
@@ -20,7 +20,7 @@ One TV-Movies is a React-based movie website that allows users to search for mov
 
 # 🍿 Technology
 
-One TV-Movies is built using the following technologies:
+OneTV-Movies is built using the following technologies:
 
 - ReactJS
 - TMDB API

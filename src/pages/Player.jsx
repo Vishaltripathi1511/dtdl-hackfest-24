@@ -27,7 +27,7 @@ const Player = () => {
       }, []);
       
     
-    document.title = `One TV Movies | ${moviedet.title}`
+    document.title = `OneTV Movies | ${moviedet.title}`
 
     return (
       <>
