@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
-const EmailCollectorModal = () => {
-  const [isModalOpen, setIsModalOpen] = useState(true);
-  const [emails, setEmails] = useState([{ email: "" }]);
-  const [message, setMessage] = useState("");
+const ConnectWithFriendsPopup = (props) => {
+    const [emails, setEmails] = useState([{ email: '' }]);
+    const [message, setMessage] = useState('');
 
   const handleInputChange = (index, event) => {
     const values = [...emails];
@@ -36,7 +35,7 @@ const EmailCollectorModal = () => {
 
       if (response.ok) {
         setMessage("Emails submitted successfully!");
-        setIsModalOpen(false);
+        props.onClose();
       } else {
         setMessage("Failed to submit emails.");
       }
@@ -47,11 +46,11 @@ const EmailCollectorModal = () => {
 
   return (
     <div>
-      {isModalOpen && (
+      {props.isOpen && (
         <div className="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50">
           <div className="p-6 w-full max-w-md relative rounded-lg shadow-lg bg-gradient-to-r from-gray-300 via-white to-gray-300">
             <button
-              onClick={() => setIsModalOpen(false)}
+              onClick={() => props.onClose()}
               className="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-2xl"
             >
               &times;
@@ -101,4 +100,4 @@ const EmailCollectorModal = () => {
   );
 };
 
-export default EmailCollectorModal;
+export default ConnectWithFriendsPopup;

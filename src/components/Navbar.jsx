@@ -41,8 +41,8 @@ function Navbar() {
         },
         {
             id: 5,
-            headername: "connect with friends",
-            Name: "connect",
+            headername: "Connect with friends",
+            Name: "Connect",
             link:"/connect "
         }
     ]

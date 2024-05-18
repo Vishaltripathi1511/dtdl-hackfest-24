@@ -6,7 +6,6 @@ import Navbar from './components/Navbar'
 import Container from './pages/Container'
 import Trending from './pages/Trending';
 import Upcoming from './pages/Upcoming';
-import EmailCollector from './components/ConnectWithFriends'
 import Favorite from './pages/Favoritepage';
 import { MovieProvider } from "./Contextpage";
 import { ToastContainer } from 'react-toastify';
@@ -15,6 +14,7 @@ import Player from './pages/Player';
 import Search from './pages/Search';
 import { Helmet } from "react-helmet";
 import logo from "./assets/images/logo.png"
+import FriendsRecommendations from './components/FriendsRecommendations';
 
 function App() {
 
@@ -43,7 +43,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/trending' element={<Trending />} />
           <Route path='/upcoming' element={<Upcoming />} />
-          <Route path='/connect' element={<EmailCollector />} />
+          <Route path='/connect' element={<FriendsRecommendations />} />
           <Route path='/moviedetail/:id' element={<Detail />} />
           <Route path="/favorite" element={<Favorite />} />
           <Route path="/player/:id/:title" element={<Player />} /> {/*Route-1 For Player, Title is just for beauty of url, it is not used anywhere.*/}

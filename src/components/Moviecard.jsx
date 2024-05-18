@@ -1,4 +1,4 @@
-import React, { useState, useEffect ,useContext} from 'react'
+import React, { useState, useEffect ,useContext, Fragment} from 'react'
 import { Link } from 'react-router-dom'
 import noimage from '../assets/images/no-image.jpg'
 import { motion } from 'framer-motion'
@@ -8,12 +8,14 @@ import { AiFillStar, AiOutlineStar} from 'react-icons/ai';
 import { LiaUserFriendsSolid } from "react-icons/lia";
 import { toast } from 'react-toastify';
 import Contextpage from '../Contextpage';
+import AddFriendPopup from './AddFriendPopup';
 
 function Moviecard({ movie }) {
     const { user } = useContext(Contextpage);
 
     const [isBookmarked, setIsBookmarked] = useState(null);
-
+    const [recommendToFriendPopup, setRecommendToFriendPopup] = useState(false);
+	
     useEffect(() => {
         if (localStorage.getItem(movie.id)) {
             setIsBookmarked(true);
@@ -42,7 +44,13 @@ function Moviecard({ movie }) {
   
 	}
 
-    return (
+	const onCloseRecommendToFriendPopup = () => {
+		setRecommendToFriendPopup(false)
+	}
+
+	return (
+		<Fragment>
+		<AddFriendPopup isOpen={recommendToFriendPopup} onClose={onCloseRecommendToFriendPopup}/>
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -53,7 +61,7 @@ function Moviecard({ movie }) {
             
             {/* bookmark buttons */}
             <button className="absolute bg-black text-white p-2 z-20 right-0 m-3 rounded-full text-xl" onClick={BookmarkMovie}> {isBookmarked ? <AiFillStar /> : <AiOutlineStar/>}</button>
-            <button className="absolute bg-black text-white p-2 z-20 right-0 top-10 m-3 rounded-full text-xl" onClick={openRecommendPopup}> <LiaUserFriendsSolid/></button>
+            <button className="absolute bg-black text-white p-2 z-20 right-0 top-10 m-3 rounded-full text-xl" onClick={() => setRecommendToFriendPopup(true)}> <LiaUserFriendsSolid/></button>
 
             
             <div className='absolute bottom-0 w-full flex justify-between items-end p-3 z-20'>
@@ -69,6 +77,7 @@ function Moviecard({ movie }) {
                     <LazyLoadImage effect='blur' className='img object-cover' src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} />}
             </div>
         </motion.div>
+		</Fragment>
     )
 }
 

@@ -81,7 +81,7 @@ export function MovieProvider({ children }) {
     setTrending(trending.concat(trend.results));
     setTotalPage(trend.total_pages);
     setLoader(false);
-    setHeader("Trending Movies");
+    setHeader("Connect with friends");
   }
 
   const fetchUpcoming = async () => {
