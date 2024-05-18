@@ -38,6 +38,12 @@ function Navbar() {
             headername: "Favorite Movies",
             Name: "Favorites",
             link:"/favorite"
+        },
+        {
+            id: 5,
+            headername: "connect with friends",
+            Name: "connect",
+            link:"/connect "
         }
     ]
 
