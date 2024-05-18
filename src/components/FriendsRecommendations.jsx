@@ -12,7 +12,7 @@ import ConnectWithFriendsPopup from './ConnectWithFriendsPopup';
 
 function FriendsRecommendations() {
 
-    const { loader, page, setPage, fetchTrending, trending, totalPage } = useContext(Contextpage);
+    const { loader, page, setPage, fetchRecommendationByFriends, recommendedByFriends, totalPage } = useContext(Contextpage);
     const [addFriendsPopup, setAddFriendsPopup] = useState(false);
 
 	const onCloseAddFriendsPopup = () => {
@@ -24,7 +24,7 @@ function FriendsRecommendations() {
 
     useEffect(() => {
         if (page > 0) {
-            fetchTrending();
+            fetchRecommendationByFriends();
         }
     }, [page])
 
@@ -49,21 +49,21 @@ function FriendsRecommendations() {
                         {
                             loader ? <span className="loader m-10"></span> :
                                 <>
-                                    <InfiniteScroll
+                                    {/* <InfiniteScroll
                                         className="w-full md:p-2 flex flex-wrap relative justify-evenly md:justify-around"
-                                        dataLength={trending.length} //This is important field to render the next data
+                                        dataLength={recommendedByFriends.length} //This is important field to render the next data
                                         next={() => setPage(page + 1)}
                                         hasMore={page < totalPage}
                                         loader={<span className="loader m-10"></span>}
                                         scrollThreshol={0.9}
                                         style={{ overflow: 'hidden' }}
-                                    >
+                                    > */}
 
-                                        {trending.map((tred) => (
-                                            <Moviecard key={tred.id} movie={tred} />
+                                        {recommendedByFriends && recommendedByFriends.map((recommend) => (
+                                            <Moviecard key={recommend.id} movie={recommend} />
                                         ))}
 
-                                    </InfiniteScroll>
+                                    {/* </InfiniteScroll> */}
 
                                 </>
                         }

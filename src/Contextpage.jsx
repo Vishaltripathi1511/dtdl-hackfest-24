@@ -16,6 +16,7 @@ export function MovieProvider({ children }) {
   const [movies, setMovies] = useState([]);
   const [searchedMovies, setSearchedMovies] = useState([]);
   const [trending, setTrending] = useState([]);
+  const [recommendedByFriends, setRecommendedByFriends] = useState([]);
   const [upcoming, setUpcoming] = useState([]);
   const [page, setPage] = useState(1);
   const [activegenre, setActiveGenre] = useState(28);
@@ -81,7 +82,19 @@ export function MovieProvider({ children }) {
     setTrending(trending.concat(trend.results));
     setTotalPage(trend.total_pages);
     setLoader(false);
-    setHeader("Connect with friends");
+	setHeader("Connect with friends");
+
+  }
+
+  const fetchRecommendationByFriends = async () => {
+    const data = await fetch(
+    	`http://localhost:8080/friend/recommendationToMe`,
+		setCustomHeaders()
+    );
+    const recommended = await data.json();
+    setRecommendedByFriends(recommendedByFriends.concat(recommended));
+    setLoader(false);
+    setHeader("Recommendation by Friends");
   }
 
   const fetchUpcoming = async () => {
@@ -139,6 +152,8 @@ export function MovieProvider({ children }) {
         setLoader,
         fetchTrending,
         trending,
+		fetchRecommendationByFriends,
+		recommendedByFriends,
         fetchUpcoming,
         upcoming,
         GetFavorite,
