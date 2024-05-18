@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+const auth_token = import.meta.env.VITE_AUTHORIZATION_TOKEN;
 const ConnectWithFriendsPopup = (props) => {
     const [emails, setEmails] = useState([{ email: '' }]);
     const [message, setMessage] = useState('');
@@ -25,19 +26,20 @@ const ConnectWithFriendsPopup = (props) => {
     const emailList = emails.map((emailObj) => emailObj.email);
 
     try {
-      const response = await fetch("https://api.example.com/submit-emails", {
+      const response = await fetch("http://localhost:8080/friend/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+		  "Authorization": `Bearer ${auth_token}`
         },
-        body: JSON.stringify({ emails: emailList }),
+        body: JSON.stringify({ username: emailList }),
       });
 
       if (response.ok) {
         setMessage("Emails submitted successfully!");
         props.onClose();
       } else {
-        setMessage("Failed to submit emails.");
+        setMessage("Error Sending request to the user(s). Kindly re-check your input data");
       }
     } catch (error) {
       setMessage("Error: " + error.message);
@@ -56,26 +58,27 @@ const ConnectWithFriendsPopup = (props) => {
               &times;
             </button>
             <h1 className="text-2xl font-bold mb-4 text-gray-700">
-              Email Collector
+              Add Friends
             </h1>
             <form onSubmit={handleSubmit}>
               {emails.map((email, index) => (
                 <div key={index} className="flex items-center mb-3">
                   <input
                     type="text"
-                    className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500 transition duration-200"
+                    className=" px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500 transition duration-200"
                     placeholder="Enter email"
                     value={email.email}
                     onChange={(event) => handleInputChange(index, event)}
+					width="15"
                     required
                   />
-                  <button
+                  {emails.length !== 1 && <button
                     type="button"
                     onClick={() => handleRemoveEmail(index)}
                     className="ml-2 text-gray-500 hover:text-gray-800 text-xl transition duration-200"
                   >
                     &times;
-                  </button>
+                  </button>}
                 </div>
               ))}
               <button
