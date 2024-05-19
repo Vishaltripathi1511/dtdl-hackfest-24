@@ -16,6 +16,7 @@ import { Helmet } from "react-helmet";
 import logo from "./assets/images/logo.png"
 import FriendsRecommendations from './components/FriendsRecommendations';
 import WatchHistory from './components/WatchHistory';
+import Chat from './components/Chat'
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
       />
 
       <Navbar />
+      <Chat/>
       <div >
         <Routes>
           <Route path='/' element={<Container />} />
