@@ -11,9 +11,6 @@ function Searchbar() {
 	const navigate = useNavigate();
 	let inputRef = useRef(null);
 
-	const searchDelayed = () => {
-		$("#searchpanel").change($.debounce(250, show_loading));
-	};
 	// debounce(openSearch, 500);
 
 	const [typingTimeout, setTypingTimeout] = useState(null);
@@ -85,6 +82,7 @@ function Searchbar() {
 			"western",
 			"how are you",
 			"can you help",
+			"how is"
 		];
 		const matchingKeyword = keywords.find((keyword) =>
 			utterance.text.includes(keyword)
@@ -101,6 +99,14 @@ function Searchbar() {
 		) {
 			result = new SpeechSynthesisUtterance(
 				"Sure, can you please be more specific about what you wana watch"
+			);
+		} else if (
+			matchingKeyword &&
+			matchingKeyword &&
+			matchingKeyword.includes("how is")
+		) {
+			result = new SpeechSynthesisUtterance(
+				"Today is a sunny day"
 			);
 		} else if (matchingKeyword) {
 			console.log(`Keyword found in the text: ${matchingKeyword}`);
@@ -168,12 +174,11 @@ function Searchbar() {
 						type="search"
 						name="searchpanel"
 						id="searchpanel"
-						ref={inputRef}
 						placeholder="Search Movie"
 						className="p-3 w-full mx-10 md:w-[40rem]  rounded-xl outline-none"
 						onKeyUp={(e) => handleSearch()}
 						value={value}
-						onChange={searchDelayed}
+						onChange={(e) => setValue(e.target.value)}
 					/>
 					<button
 						onClick={startListening}
