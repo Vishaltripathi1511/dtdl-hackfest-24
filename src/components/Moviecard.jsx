@@ -38,7 +38,7 @@ function Moviecard({ movie }) {
 			`http://localhost:8080/recommendation/view?movieId=${movie.id}`,
 			{
 				method: 'GET',
-				headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaHVua3kuZ3VwdGEiLCJpYXQiOjE3MTYwMzgwNTEsImV4cCI6MTcxNjEyODA1MX0.npf0L8_QRAQq5J9K8R_fNAaMT9rdMeZjIFYqtoDENbc'}
+				headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaHVua3kuZ3VwdGEiLCJpYXQiOjE3MTYwODM0MzIsImV4cCI6MTcxNjE3MzQzMn0.MCNTV_6y2j9c0lUywHyfh4bAdYG37imo7BitD9JTCEw'}
 			}
 		);
   

@@ -15,6 +15,7 @@ import Search from './pages/Search';
 import { Helmet } from "react-helmet";
 import logo from "./assets/images/logo.png"
 import FriendsRecommendations from './components/FriendsRecommendations';
+import WatchHistory from './components/WatchHistory';
 
 function App() {
 
@@ -44,6 +45,7 @@ function App() {
           <Route path='/trending' element={<Trending />} />
           <Route path='/upcoming' element={<Upcoming />} />
           <Route path='/connect' element={<FriendsRecommendations />} />
+          <Route path='/history' element={<WatchHistory />} />
           <Route path='/moviedetail/:id' element={<Detail />} />
           <Route path="/favorite" element={<Favorite />} />
           <Route path="/player/:id/:title" element={<Player />} /> {/*Route-1 For Player, Title is just for beauty of url, it is not used anywhere.*/}

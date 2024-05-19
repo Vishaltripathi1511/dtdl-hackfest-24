@@ -13,11 +13,12 @@ function Navbar() {
     const [activemobile, setActivemobile] = useState(false);
 
     const Navdata = [
-        { id: 1, Name: "GENRES", link: "/" },
+        // { id: 1, Name: "GENRES", link: "/" },
         { id: 2, Name: "TRENDING", link: "/trending" },
         { id: 3, Name: "UPCOMING", link: "/upcoming" },
         { id: 4, Name: "FAVOURITES", link: "/favorite" },
-        { id: 5, Name: "CONNECT", link: "/connect" }
+        { id: 5, Name: "CONNECT", link: "/connect" },
+        { id: 6, Name: "WATCH HISTORY", link: "/history" },
     ];
 
     return (
